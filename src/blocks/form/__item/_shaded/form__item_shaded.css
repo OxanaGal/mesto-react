@@ -1,0 +1,3 @@
+.form__item_shaded::placeholder{
+  opacity: .2;
+}

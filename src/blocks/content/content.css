@@ -1,0 +1,16 @@
+.content{
+  margin: 40px auto 66px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 720px){
+  .content{
+    margin-bottom: 48px;
+  }
+}
+
+@media screen and (max-width: 565px){
+  .content{
+    margin-top: 42px;
+  }
+}

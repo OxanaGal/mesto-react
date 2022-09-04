@@ -1,0 +1,13 @@
+.profile__btn {
+  padding: 0;
+  margin: 0;
+
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  background-color: #000;
+  color: #fff;
+
+  cursor: pointer;
+}

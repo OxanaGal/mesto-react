@@ -1,0 +1,13 @@
+.preview__image{
+  max-width: 75vh;
+  max-height: 75vh;
+
+  object-fit: contain;
+}
+
+@media screen and (max-width: 565px){
+  .preview__image{
+    max-width: 75vw;
+    max-height: 75vw;
+  }
+}
