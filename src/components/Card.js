@@ -1,23 +1,23 @@
-function Card(props){
-  console.log(props.card)
+function Card({ card, onCardClick, link, name, likes }) {
+
   function handleClick() {
-    props.onCardClick(props.card);
+    onCardClick(card);
   }
 
-    return (
-        <li className="card">
+  return (
+    <li className="card">
 
-          <img className="card__image shaded" src={`${props.link}`} alt="description" onClick={handleClick}/>
-            <div className="card__description">
-              <h2 className="card__title">{`${props.name}`}</h2>
-              <div className="card__like-section">
-                <button className="card__btn card__btn_action_like shaded"></button>
-                <span className="card__like-counter">{`${props.likes}`}</span>
-              </div>
-            </div>
-            <button className="card__btn card__btn_action_delete shaded"></button>
-        </li>
-    )
+      <img className="card__image shaded" src={`${link}`} alt={`${name}`} onClick={handleClick} />
+      <div className="card__description">
+        <h2 className="card__title">{`${name}`}</h2>
+        <div className="card__like-section">
+          <button className="card__btn card__btn_action_like shaded"></button>
+          <span className="card__like-counter">{`${likes}`}</span>
+        </div>
+      </div>
+      <button className="card__btn card__btn_action_delete shaded"></button>
+    </li>
+  )
 }
 
 export default Card;
