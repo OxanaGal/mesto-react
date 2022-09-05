@@ -5,7 +5,7 @@ function ImagePopup({ name, card, onClose }) {
       <div className="preview">
         <button className="popup__btn popup__btn_action_close shaded" type="button" onClick={onClose}></button>
         <figure className="preview__area">
-          <img className="preview__image" src={`${card.card.link}`} alt="Изображение" />
+          <img className="preview__image" src={`${card.card.link}`} alt={`${card.card.name}`} />
           <figcaption className="preview__description">{`${card.card.name}`}</figcaption>
         </figure>
       </div>
