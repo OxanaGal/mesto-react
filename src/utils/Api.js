@@ -43,7 +43,7 @@ class Api {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({ avatar: data.link})
+      body: JSON.stringify(data)
     })
       .then((res) => this._checkServerResponse(res));
   }
@@ -69,7 +69,7 @@ class Api {
   toggleLike(cardId, isLiked) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       headers: this._headers,
-      method: isLiked ? 'DELETE' : 'PUT',
+      method: isLiked ? 'PUT' : 'DELETE' ,
     })
       .then((res) => this._checkServerResponse(res));
   }

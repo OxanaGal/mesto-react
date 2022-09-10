@@ -1,53 +1,36 @@
-import {useEffect, useState} from 'react';
+import { useContext } from 'react';
 import Card from './Card';
-import { api } from '../utils/Api';
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
 
-function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick }) {
+function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardClick, cards, onCardLike, onCardDelete }) {
 
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState('');
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([user, cards]) => {
-        setUserName(user.name);
-        setUserDescription(user.about);
-        setUserAvatar(user.avatar);
-        setCards(cards);
-      })
-      .catch((err) => {
-        console.log(err);
-      })
-  }, [])
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <main className="content">
       <section className="profile">
         <div className="profile__columns">
           <div className="profile__avatar" onClick={onEditAvatar}>
-            <img className="profile__image" src={`${userAvatar}`} alt="Аватар профиля" />
+            <img className="profile__image" src={currentUser.avatar} alt="Аватар профиля" />
           </div>
           <div className="profile__info">
-            <h1 className="profile__title">{`${userName}`}</h1>
+            <h1 className="profile__title">{`${currentUser.name || ""}`}</h1>
             <button className="profile__btn profile__btn_action_edit shaded" type="button" onClick={onEditProfile}></button>
-            <p className="profile__description">{`${userDescription}`}</p>
+            <p className="profile__description">{`${currentUser.about || ""}`}</p>
           </div>
         </div>
         <button className="profile__btn profile__btn_action_add shaded" type="button" onClick={onAddPlace}></button>
       </section>
       <section className="cards">
         <ul className="cards__list">
-          {cards.map((data) => {
+          {cards?.map((data) => {
             return (
               <Card
                 card={data}
                 key={data._id}
-                name={data.name}
-                link={data.link}
-                likes={data.likes.length}
                 onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
               />
             )
           }
