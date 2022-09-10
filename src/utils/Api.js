@@ -13,65 +13,62 @@ class Api {
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 
+
+  _request(url, options) {
+    return fetch(url, options).then(this._checkServerResponse)
+  }
+
   getUserInfo() {
-    return fetch(`${this._url}/users/me`, {
+    return this._request(`${this._url}/users/me`, {
       method: 'GET',
       headers: this._headers
     })
-      .then((res) => this._checkServerResponse(res));
   }
 
   getInitialCards() {
-    return fetch(`${this._url}/cards/`, {
+    return this._request(`${this._url}/cards/`, {
       method: 'GET',
       headers: this._headers
     })
-      .then((res) => this._checkServerResponse(res));
   }
 
   patchUserProfile(data) {
-    return fetch(`${this._url}/users/me`, {
+    return this._request(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({ name: data.name, about: data.about })
     })
-      .then((res) => this._checkServerResponse(res));
   }
 
   patchUserAvatar(data) {
-
-    return fetch(`${this._url}/users/me/avatar`, {
+    return this._request(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify(data)
     })
-      .then((res) => this._checkServerResponse(res));
   }
 
   postNewCard(item){
-    return fetch(`${this._url}/cards`, {
+    return this._request(`${this._url}/cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({ name: item.name, link: item.link })
     })
-      .then((res) => this._checkServerResponse(res));
   }
 
 
   deleteCard(cardId){
-    return fetch(`${this._url}/cards/${cardId}`, {
+    return this._request(`${this._url}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
     })
-      .then((res) => this._checkServerResponse(res));
   }
 
   toggleLike(cardId, isLiked) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
+    return this._request(`${this._url}/cards/${cardId}/likes`, {
       headers: this._headers,
       method: isLiked ? 'PUT' : 'DELETE' ,
     })
-      .then((res) => this._checkServerResponse(res));
   }
 
 }

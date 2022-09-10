@@ -38,12 +38,12 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
           <fieldset className="form__input-container">
             <label htmlFor="title" className="form__label">
               <input type="text" className="form__item form__text-name" id="title" name="name" placeholder="Имя" minLength="2"
-                maxLength="40" value={name} onChange={handleNameChange} required />
+                maxLength="40" value={name || ''} onChange={handleNameChange} required />
               <span className="form__input-error title-error"></span>
             </label>
             <label htmlFor="profile-info" className="form__label">
               <input type="text" className="form__item form__text-info" id="profile-info" name="about" placeholder="О себе"
-                minLength="2" maxLength="200" value={description} onChange={handleAboutChange} required />
+                minLength="2" maxLength="200" value={description || ''} onChange={handleAboutChange} required />
               <span className="form__input-error profile-info-error"></span>
             </label>
           </fieldset>

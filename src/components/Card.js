@@ -22,7 +22,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
   }
 
   return (
-    <li className="card" key={card._id}>
+    <li className="card">
       <img className="card__image shaded" src={card.link} alt={card.name} onClick={handleClick} />
       <div className="card__description">
         <h2 className="card__title">{card.name}</h2>
