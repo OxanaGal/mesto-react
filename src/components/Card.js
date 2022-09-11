@@ -34,7 +34,7 @@ function Card({ card, onCardClick, onCardLike, onCardDeleteClick }) {
           <span className="card__like-counter">{card.likes.length}</span>
         </div>
       </div>
-      <button className={`card__btn ${isOwn ? 'card__btn_action_delete' : ''} shaded`} onClick={handleDeleteClick}></button>
+      {isOwn && <button className="card__btn card__btn_action_delete shaded" onClick={handleDeleteClick}></button>}
     </li>
   )
 }
