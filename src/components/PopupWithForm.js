@@ -6,7 +6,7 @@ function PopupWithForm({ name, isOpen, title, children, btnText, onClose, onSubm
     }
   }
   return (
-    <div className={`popup popup_view_${name} ${isOpen && 'popup__opened'}`} onClick={handleOverlayClose}>
+    <div className={`popup popup_view_${name} ${isOpen ? 'popup__opened' : ''}`} onClick={handleOverlayClose}>
       <div className="popup__container" onClick={event => event.stopPropagation()}>
         <form className="form" name={`${name}`} action="#" onSubmit={onSubmit} >
           <h2 className="form__heading">{`${title}`}</h2>

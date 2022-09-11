@@ -30,11 +30,11 @@ function Card({ card, onCardClick, onCardLike, onCardDeleteClick }) {
         <h2 className="card__title" data-tip={card.name} data-for="title">{card.name}</h2>
        {/* <ReactTooltip id="title" place="top" type="dark" effect="solid"/> */}
         <div className="card__like-section">
-          <button className={`card__btn card__btn_action_like ${isLiked && 'card__btn_action_liked'} shaded`} onClick={handleCardLike}></button>
+          <button className={`card__btn card__btn_action_like ${isLiked ? 'card__btn_action_liked' : ''} shaded`} onClick={handleCardLike}></button>
           <span className="card__like-counter">{card.likes.length}</span>
         </div>
       </div>
-      <button className={`card__btn ${isOwn &&'card__btn_action_delete'} shaded`} onClick={handleDeleteClick}></button>
+      <button className={`card__btn ${isOwn ? 'card__btn_action_delete' : ''} shaded`} onClick={handleDeleteClick}></button>
     </li>
   )
 }
